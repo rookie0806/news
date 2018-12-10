@@ -16,11 +16,13 @@ urlpatterns = [
     url(r'^news/', include("rookie.news.urls", namespace="news")),
     url(r'^users/', include("rookie.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
-    #url(r'^', views.ReactAppView.as_view()),
     # Your stuff: custom urls includes go here
 ] + static(
-    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT,
 )
+urlpatterns += [
+    url(r'^', views.ReactAppView.as_view()),
+]
 
 
 if settings.DEBUG:
