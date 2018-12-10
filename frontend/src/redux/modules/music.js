@@ -2,47 +2,111 @@
 import {actionCreators as UserActions} from "redux/modules/user";
 
 //actions
-const SET_TOP100 = "SET_TOP100";
-//action creators
-function setTop100(top100){
-    return{
-        type: SET_TOP100,
-        top100
+const SET_NEWS = "SET_NEWS";
+const SET_PWORD = "SET_PWORD";
+const SET_NPWORD = "SET_NPWORD";
+function setNews(news) {
+    return {
+        type: SET_NEWS,
+        news
     }
 }
-//api actions
-
-function getTop100(){
+function setPword(pword) {
+    return {
+        type: SET_PWORD,
+        pword
+    }
+}
+function setNPword(npword) {
+    return {
+        type: SET_NPWORD,
+        npword
+    }
+}
+function getNews(Time) {
+    console.log(Time)
+    const url = "/news/search/?time=" + Time
+    console.log(url)
     return (dispatch, getState) => {
-        const {user : { token }} = getState();
-        fetch("/musics/top100")
-        .then(response=>response.json())
-        .then(json => dispatch(setTop100(json)));
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                dispatch(setNews(json))
+            });
+    }
+}
+function getPword(Time) {
+    console.log(Time)
+    const url = "/news/pgword/?time=" + Time
+    console.log(url)
+    return (dispatch, getState) => {
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                dispatch(setPword(json))
+            });
+    }
+}
+function getNPword(Time) {
+    console.log(Time)
+    const url = "/news/npgword/?time=" + Time
+    console.log(url)
+    return (dispatch, getState) => {
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                dispatch(setNPword(json))
+            });
     }
 }
 //initial state
-const initialState={};
+const initialState={
+   tags: localStorage.getItem("tags") ? localStorage.getItem("tags").split(',') : [],
+};
 //reducer
 
 function reducer(state=initialState,action){
     switch(action.type){
-        case SET_TOP100:
-            return applySetTop100(state,action);
+        case SET_NEWS:
+            return applySetNews(state, action);
+        case SET_PWORD:
+            return applySetPword(state, action);
+        case SET_NPWORD:
+            return applySetNPword(state, action);
         default:
             return state;
     }
 }
 //reducer functions 
-function applySetTop100(state,action){
-    const {top100} = action;
+function applySetNews(state,action){
+    const {news} = action;
     return {
         ...state,
-        top100
-    };
+        news
+    }
+}
+function applySetPword(state,action){
+    const {pword} = action;
+    return {
+        ...state,
+        pword
+    }
+}
+function applySetNPword(state,action){
+    const {npword} = action;
+    return {
+        ...state,
+        npword
+    }
 }
 //export 
 const actionCreators ={
-    getTop100
+    getNews,
+    getPword,
+    getNPword
 };
 export {actionCreators};
 //default reducer export

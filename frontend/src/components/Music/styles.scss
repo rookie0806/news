@@ -21,5 +21,16 @@
             padding-right:20px;
             color : black;
         }
+        .icon {
+            cursor: pointer;
+        }
+        .button{
+            background-color:transparent;
+            text-decoration: none;
+            border: none;
+        }
+        .button:focus {
+          outline: none;
+        }
     }
 }

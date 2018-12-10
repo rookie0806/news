@@ -40,7 +40,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('DATABASE_URL',default='postgres:///db')
+    'default': env.db('DATABASE_URL',default='postgres:///news')
 
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
@@ -68,8 +68,8 @@ THIRD_PARTY_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount',
+    #'allauth.socialaccount.providers.facebook',
     'rest_framework',
     'rest_framework.authtoken',
     'taggit',
@@ -80,7 +80,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'rookie.users.apps.UsersAppConfig',
-    'rookie.musics.apps.MusicsConfig',
+    'rookie.news.apps.NewsConfig',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

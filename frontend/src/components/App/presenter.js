@@ -7,6 +7,7 @@ import Auth from "components/Auth";
 import Navigation from "components/Navigation";
 import Main from "components/Main";
 import Logout from "components/Logout";
+import Delete from "components/DeleteForm";
 const App = props => [
     //Nav,
     //Router,
@@ -21,17 +22,13 @@ App.propTypes = {
 }
 const PrivateRoutes = props => (
     <Switch>
-        <Route exact path="/" component={Main}/>
-        <Route exact path="/logout" component={Logout}/>
-        <Route exact path="/signup" component={Main}/>
+        <Route path="/" component={Main}/>
     </Switch>
 )
 
 const PublicRoutes = props => (
     <Switch>
-        <Route exact path="/" component={Main}/>
-        <Route exact path="/signup" component={Auth}/>
-        <Route exact path="/forgot" render={()=> "password"}/>
+        <Route path="/" component={Main}/>
     </Switch>
 )   
 export default App;

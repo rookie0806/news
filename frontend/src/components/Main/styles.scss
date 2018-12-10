@@ -1,3 +1,4 @@
+
 .main{
     min-height: 500px;
     display:flex;
@@ -7,65 +8,103 @@
     margin: 0 auto;
     align-items : center;
 }
-.music{
-    max-width : $max-page-width;
-    width:100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:10px;
-    a.noline {
-      text-decoration: none
-    }
-    .buttons{
-        
-        display : flex;
-        .button_h{
-            display: flex;
-            border: 1px solid #b2b2b2;
-            border-radius: 200px;
-            text-align: center;
-            text-decoration: none;
-            height: 30px;
-            outline : 0;
-            vertical-align: middle;
-            white-space: nowrap;
-            cursor: pointer;
-            margin-right:20px;
-            .word {
-                padding-left:5px;
-                font-size: 12px;
+.white-box {
+  text-align: center;
+  padding: 200px;
+  margin-top : 20px;
+  width: 70%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  @include boxBorder(no);
+  .office{
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+     flex: auto;
+  }
+  .date{
+      font-size:20px;
+      font-weight:bold;
+      padding-bottom: 20px;
+      .btn{
+          padding-left : 15px;
+          padding-right : 15px;
+          font-size:25px;
+          color:grey;
+
+      }
+  }
+  .wordlist {
+    color: darkgrey;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 50px;
+    padding-bottom: 10px;
+  }
+  .list{
+      display:flex;
+      align-content: center;
+        .notprogress{
+            margin: 0 auto;
+            .word{
+                font-size: 15px;
+                font-weight: bold;
+                color:#FE642E;
+                padding-top: 30px;
+                padding-bottom: 20px;
+            }
+            .leftbox{
+                //width:150px;
+                width:300px;
+                border:2px solid darkgrey;
             }
         }
-        
-    }
-    .top100{
-        //border-bottom: 0.5px solid darkgrey
-        margin-top:10px;
-        .table{
-            text-align: center;
-            justify-content: space-between;
-            vertical-align: baseline;
-            .column{
-                padding-top : 10px;
-                padding-bottom: 10px;
-                vertical-align: middle;
-                border-top: 0.5px solid darkgrey;
-                border-bottom:0.5px solid darkgrey;
-                color : darkgrey;
-                .albumart {
-                    background-color: $bg-color;
-                    padding-left:10px;
-                    padding-right:10px;
-                    height: 70px;
-                    width : 70px;
-                    border: 0px;
-                }
-                .grade{
-                    padding-left:20px;
-                    padding-right:20px;
-                    color : black;
-                }
+        .progress{
+            margin: 0 auto;
+            .word{
+                font-size: 15px;
+                color:#00BFFF;
+                font-weight: bold;
+                padding-top: 30px;
+                padding-bottom: 20px;
+            }
+            .leftbox{
+                //width:150px;
+                width:300px;
+                border:2px solid darkgrey;
             }
         }
     }
+}
+.columns{
+    display : flex;
+    padding: 10px;
+    border-bottom: 1px solid #bcbcbc;
+    .grade{
+        padding-left:5px;
+        width:20%;
+    }
+    .words{
+        width:60%;
+    }
+    .count {
+        width:20%;
+    }
+}
+.box{
+    flex: auto;
+    box-sizing: border-box;
+    padding : 10px 10px 10px 10px;
+    margin-top:20px;
+    padding-bottom:20px;
+    margin-left :20px;
+    padding-top : 20px;
+    border: 1px solid darkgrey;
+    background-color: white;
+    border-radius: 5px;
+    .Name{
+        padding-bottom :10px;
+        font-weight:bold;
+    }
+    
 }

@@ -7,7 +7,7 @@ const Main = props => {
     if(props.loading){
         return <LoadingMain/>
     }
-    else if(props.top100){
+    else if(props.news){
         return <RenderTop100 {...props}/>
     }
 }
@@ -19,66 +19,57 @@ const LoadingMain = props => (
 )
 
 const RenderTop100 = props => (
-    <div className={styles.music}>
-        <div className={styles.buttons}>
-            <a href="melonplayer://play?ref=&menuid=19030101&cid=31293843&cflag=1&isHifiMenu=false&loginTime=undefined&userId=&memberKey=&token=undefined&mac=" className={styles.noline} >
-                <button className = {styles.button_h}>
-                    <img
-                        src={require("images/melon.png")}
-                        height="15px"
-                        alt={"Logo"}
-                    />
-                        <span className={styles.word}>  멜론으로 듣기  </span>
-                </button>
-            </a>
-            <button className={styles.button_h}>
-                <img
-                    src={require("images/genie.png")}
-                    height="15px"
-                    alt={"Logo"}
-                />
-                <span className={styles.word}>     지니로 듣기 </span>
-            </button>
-            <button className={styles.button_h}>
-                <img
-                    src={require("images/bugs.png")}
-                    height="15px"
-                    alt={"Logo"}
-                />
-                <span className={styles.word}> 벅스로 듣기 </span>
-            </button>
-            <button className={styles.button_h}>
-                <img
-                    src={require("images/mnet.png")}
-                    height="18px"
-                    alt={"Logo"}
-                />
-                <span className={styles.word}> 엠넷으로 듣기 </span>
-            </button>
-            <button className={styles.button_h}>
-                <img
-                    src={require("images/naver.png")}
-                    height="15px"
-                    alt={"Logo"}
-                />
-                <span className={styles.word}> 네이버로 듣기 </span>
-            </button>
+    <div className={styles.main}>
+        <div className={styles.whiteBox}>
+         <div className={styles.date}>
+            <span onClick={props.handleClick("True")} className={styles.btn}>&lt;</span>
+           {props.time[props.index-1]} ~ {props.time[props.index]}
+           <span onClick={props.handleClick("False")}className={styles.btn}>&gt; </span></div>
+            <div className={styles.office}>{props.news.map(news=> <Box {...props}{...news}/>)}</div>
+            <div className={styles.wordlist}>가장 많이 나온 단어</div>
+            <div className={styles.list}>
+                <div className={styles.notprogress}>
+                    <div className={styles.word}>보수</div>
+                    <div className={styles.leftbox}>{props.npword.map((npword,i)=> <Word i={i} {...props}{...npword}/>)}</div>
+                </div>
+                <div className={styles.progress}>
+                    <div className={styles.word}>진보</div>
+                    <div className={styles.leftbox}>{props.pword.map((pword,i)=> <Word i={i} {...props}{...pword}/>)}</div>
+                </div>
+            </div>
         </div>
-        <table className={styles.top100}>
-            <tr className={styles.table}>
-                <td className={styles.column}>순위</td>
-                <td className={styles.column}>앨범아트</td>
-                <td className={styles.column}>곡명</td>
-                <td className={styles.column}>가수</td>
-                <td className={styles.column}>앨범명</td>
-            </tr>
-            {props.top100.map(music => <Music {...music} key={music.id}/>)} 
-        </table>
     </div>
 )
+const Word = (props,context)=>{
+    return(
+        <div className={styles.columns}>
+            <div className={styles.grade}>{props.i+1}.</div>
+            <div className={styles.words}>{props.Word}</div>
+            <div className={styles.count}>{props.Count}개</div>
+        </div>
+        //<div></div>
+    )
+}
+const Box = (props, context) => {
+    return(
+        <div className={styles.box}>
+            <div className={styles.Name}>
+                {props.Percentage >= 50 ?
+                    <div style={{color : '#00BFFF' }}>{props.Office_name}</div>
+                    :
+                     <div style={{color : '#FE642E' }}>{props.Office_name}</div>
+                }  
+            </div>
+            <div className={styles.Percentage}>
+                <div>진보율 : {props.Percentage}%</div>
+            </div>
+        </div>
+    );
 
+}
 Main.propTypes = {
-    loading : PropTypes.bool.isRequired
+    handleClick : PropTypes.func.isRequired,
+    url: PropTypes.string.isRequired,
 }
 
 export default Main;

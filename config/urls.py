@@ -13,7 +13,7 @@ urlpatterns = [
     #url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-    url(r'^musics/', include("rookie.musics.urls", namespace="musics")),
+    url(r'^news/', include("rookie.news.urls", namespace="news")),
     url(r'^users/', include("rookie.users.urls", namespace="users")),
     url(r'^accounts/', include('allauth.urls')),
     #url(r'^', views.ReactAppView.as_view()),

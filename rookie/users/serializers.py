@@ -3,7 +3,6 @@ from rest_auth.registration.serializers import RegisterSerializer
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from . import models
-from rookie.musics import serializers as musics_serializers
 class UserListSerializer(serializers.ModelSerializer):
 
     class Meta:

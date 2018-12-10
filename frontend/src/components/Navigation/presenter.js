@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Ionicon from "react-ionicons";
 import { Link } from "react-router-dom";
 import styles from "./styles.scss";
@@ -10,7 +9,7 @@ const Navigation = (props, context) => (
             <div className={styles.column}>
                 <Link to="/">
                 <img
-                    src={require("images/logo.png")}
+                    src={require("images/logo.jpg")}
                     className={styles.logo}
                     alt={"Logo"}
                 />
